@@ -154,7 +154,7 @@ Only `NODE_ENV`, `BASE_URL`, and variables that start with `VUE_APP_` will be st
 The file [`.github/workflows/ie-bank-frontend.yml`](.github\workflows\ie-bank-frontend.yml) contains the configuration for the CI/CD pipeline.
 
 ### GitHub secrets
-
+hhhggf
 The workflow uses the following GitHub secrets:
 
 Secret name | Description | Learn more
