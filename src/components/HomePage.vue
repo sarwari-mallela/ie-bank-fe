@@ -3,7 +3,7 @@
       <div class="welcome-text">
         <h1 class="pretty-font">Welcome to IE Bank</h1>
         <p>Your Trusted Banking Partner</p>
-        <button @click="navigateToAccounts" style = "background-color: rgba(218, 130, 177, 0.521); color:white;">View/Create Accounts</button>
+        <button @click="navigateToAccounts" class ="action-button">View/Create Accounts</button>
       </div>
     </div>
   </template>
