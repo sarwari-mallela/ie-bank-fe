@@ -172,6 +172,7 @@ export default {
       createAccountForm: {
         name: "",
         currency: "",
+        country:"",
       },
       editAccountForm: {
         id: "",
