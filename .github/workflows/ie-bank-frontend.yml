@@ -62,7 +62,7 @@ jobs:
 
   deploy-uat:
     runs-on: ubuntu-latest
-    needs: build
+    needs: [build,deploy]
     environment:
       name: 'User Acceptance Testing'
       url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
