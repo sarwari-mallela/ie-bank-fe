@@ -11,6 +11,7 @@ on:
 
 env:
   FRONTEND_WEBAPP_DEV: sarwari-fe-dev
+  FRONTEND_WEBAPP_UAT: sarwari-fe-uat
 
 jobs:
   build:
