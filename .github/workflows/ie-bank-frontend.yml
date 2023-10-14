@@ -33,21 +33,21 @@ jobs:
 
 
       - name: Upload artifact for deployment dev job
-      uses: actions/upload-artifact@v3
-      with:
-        name: node-app-dev
-        path: dist-dev/
+        uses: actions/upload-artifact@v3
+        with:
+          name: node-app-dev
+          path: dist-dev/
 
       - name: npm install, build, and test for uat
-      run: |
-        npm install
-        npm run build -- --mode uat --dest dist-uat ## this command will build the vue.js app using the .env.uat variables into the dest-uat/ folder
+        run: |
+          npm install
+          npm run build -- --mode uat --dest dist-uat ## this command will build the vue.js app using the .env.uat variables into the dest-uat/ folder
 
       - name: Upload artifact for deployment uat job
-      uses: actions/upload-artifact@v3
-      with:
-        name: node-app-uat
-        path: dist-uat/
+        uses: actions/upload-artifact@v3
+        with:
+          name: node-app-uat
+          path: dist-uat/
 
   deploy:
     runs-on: ubuntu-latest
