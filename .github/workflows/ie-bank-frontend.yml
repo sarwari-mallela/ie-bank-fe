@@ -26,16 +26,28 @@ jobs:
           node-version: '18.x'
           cache: 'npm'
 
-      - name: npm install, build, and test
+      - name: npm install, build, and test for dev
         run: |
           npm install
           npm run build -- --mode development --dest dist-dev ## this command will build the vue.js app using .env.development variables into the dest-div/ folder
 
-      - name: Upload artifact for deployment job
-        uses: actions/upload-artifact@v3
-        with:
-          name: node-app-dev
-          path: dist-dev/
+
+      - name: Upload artifact for deployment dev job
+      uses: actions/upload-artifact@v3
+      with:
+        name: node-app-dev
+        path: dist-dev/
+
+      - name: npm install, build, and test for uat
+      run: |
+        npm install
+        npm run build -- --mode uat --dest dist-uat ## this command will build the vue.js app using the .env.uat variables into the dest-uat/ folder
+
+      - name: Upload artifact for deployment uat job
+      uses: actions/upload-artifact@v3
+      with:
+        name: node-app-uat
+        path: dist-uat/
 
   deploy:
     runs-on: ubuntu-latest
@@ -72,7 +84,7 @@ jobs:
       - name: Download artifact from build job
         uses: actions/download-artifact@v2
         with:
-          name: node-app-dev
+          name: node-app-uat
 
       - uses: azure/login@v1
         with:
