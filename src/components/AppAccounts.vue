@@ -69,7 +69,7 @@
                   <button
                     type="button"
                     class="btn btn-primary btn-sm"
-                    @click="initiateMoneyTransfer(account)"
+                    @click="MoneyTransfer (account)"
                   >
                     Transfer Money
                   </button>
@@ -274,7 +274,7 @@ export default {
     },
   
   RESTMoneyTransfer(senderAccountId, receiverAccountId, amount) {
-      const path = `${process.env.VUE_APP_ROOT_URL}/accounts/${accountId}`;
+      const path = `${process.env.VUE_APP_ROOT_URL}/transfer`;
       // Prepare the data to be sent in the request body
       const requestData = {
         sender_account_number: senderAccountId,
@@ -355,7 +355,7 @@ export default {
     },
 
     MoneyTransfer(account) {
-      this.RESTMoneyTransfer(account.id);
+      this.RESTMoneyTransfer("31269902589515712145", "45987853525491126190", 100);
     },
   },
 
