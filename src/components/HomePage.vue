@@ -20,6 +20,8 @@
 </template>
 
 <script>
+import axios from 'axios';
+
 export default {
   data() {
     return {
@@ -28,19 +30,35 @@ export default {
     };
   },
   methods: {
-    login() {
-      // Simulate a basic login logic (replace with your actual authentication logic)
-      if (this.username === 'demo' && this.password === 'password') {
-        // Successful login, navigate to accounts page
-        this.$router.push('/accounts');
-      } else {
-        // Display an error message or handle authentication failure
-        alert('Invalid credentials. Please try again.');
-      }
-    },
+    RESTlogin(payload) {
+      const path = `${process.env.VUE_APP_ROOT_URL}/login`;
+      axios
+        .post(path, payload)
+        .then((response) => {
+          const success = response.success
+          if (success){
+            this.$router.push("/accounts")
+          }
+          // For message alert
+          this.message = "Account Created succesfully!";
+          // To actually show the message
+          this.showMessage = true;
+          // To hide the message after 3 seconds
+          setTimeout(() => {
+            this.showMessage = false;
+          }, 3000);
+        })
+        .catch((error) => {
+          console.error(error);
+          this.RESTgetAccounts();
+        });
+    }
   },
 };
 </script>
+
+
+
 
 <style scoped>
 .login-page {
