@@ -50,24 +50,31 @@
                   }}</span>
                 </td>
                 <td>
-                  <div class="btn-group" role="group">
-                    <button
-                      type="button"
-                      class="btn btn-info btn-sm"
-                      v-b-modal.edit-account-modal
-                      @click="editAccount(account)"
-                    >
-                      Edit
-                    </button>
-                    <button
-                      type="button"
-                      class="btn btn-danger btn-sm"
-                      @click="deleteAccount(account)"
-                    >
-                      Delete
-                    </button>
-                  </div>
-                </td>
+                <div class="btn-group" role="group">
+                  <button
+                    type="button"
+                    class="btn btn-info btn-sm"
+                    v-b-modal.edit-account-modal
+                    @click="editAccount(account)"
+                  >
+                    Edit
+                  </button>
+                  <button
+                    type="button"
+                    class="btn btn-danger btn-sm"
+                    @click="deleteAccount(account)"
+                  >
+                    Delete
+                  </button>
+                  <button
+                    type="button"
+                    class="btn btn-primary btn-sm"
+                    @click="initiateMoneyTransfer(account)"
+                  >
+                    Transfer Money
+                  </button>
+                </div>
+              </td>
               </tr>
             </tbody>
           </table>
@@ -265,6 +272,40 @@ export default {
           this.RESTgetAccounts();
         });
     },
+  
+  RESTMoneyTransfer(senderAccountId, receiverAccountId, amount) {
+      const path = `${process.env.VUE_APP_ROOT_URL}/accounts/${accountId}`;
+      // Prepare the data to be sent in the request body
+      const requestData = {
+        sender_account_number: senderAccountId,
+        receiver_account_number: receiverAccountId,
+        amount: amount,
+      };
+
+      axios.post(path, requestData)
+        .then((response) => {
+          // Update the UI or perform any other actions after successful money transfer
+          console.log(response.data.message);
+          // For message alert
+          this.message = "Money Transfer successful!";
+          // To actually show the message
+          this.showMessage = true;
+          // To hide the message after 3 seconds
+          setTimeout(() => {
+            this.showMessage = false;
+          }, 3000);
+        })
+        .catch((error) => {
+          console.error(error);
+          // Handle errors, update UI, etc.
+          this.message = "Money Transfer failed. Please try again.";
+          this.showMessage = true;
+          setTimeout(() => {
+            this.showMessage = false;
+          }, 3000);
+        });
+    },
+
 
     /***************************************************
      * FORM MANAGEMENT
@@ -311,6 +352,10 @@ export default {
     // Handle Delete button
     deleteAccount(account) {
       this.RESTdeleteAccount(account.id);
+    },
+
+    MoneyTransfer(account) {
+      this.RESTMoneyTransfer(account.id);
     },
   },
 
