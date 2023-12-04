@@ -5,12 +5,12 @@
       <form @submit.prevent="login">
         <div class="form-group">
           <label for="username">Username:</label>
-          <input type="text" id="username" v-model="username" required>
+          <input type="text" id="username" v-model="loginDetails.email" required>
         </div>
 
         <div class="form-group">
           <label for="password">Password:</label>
-          <input type="password" id="password" v-model="password" required>
+          <input type="password" id="password" v-model="loginDetails.password" required>
         </div>
 
         <button type="submit" class="action-button">Login</button>
@@ -25,8 +25,10 @@ import axios from 'axios';
 export default {
   data() {
     return {
-      username: '',
-      password: '',
+      loginDetails: {
+        email: '',
+        password: '',
+      },
     };
   },
   methods: {
@@ -35,23 +37,28 @@ export default {
       axios
         .post(path, payload)
         .then((response) => {
-          const success = response.success
+          console.log(response);
+          const success = response.data.success;
           if (success){
-            this.$router.push("/accounts")
+            location.href = '/accounts';
           }
-          // For message alert
-          this.message = "Account Created succesfully!";
-          // To actually show the message
-          this.showMessage = true;
-          // To hide the message after 3 seconds
-          setTimeout(() => {
-            this.showMessage = false;
-          }, 3000);
         })
         .catch((error) => {
           console.error(error);
-          this.RESTgetAccounts();
         });
+    },
+
+    login() {
+      const payload = {
+        email: this.loginDetails.email,
+        password: this.loginDetails.password,
+      }
+      this.RESTlogin(this.loginDetails);
+    },
+
+    initForm() {
+      this.loginDetails.email = "";
+      this.loginDetails.password = "";
     }
   },
 };
