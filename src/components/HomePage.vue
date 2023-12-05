@@ -40,7 +40,7 @@ export default {
           console.log(response);
           const success = response.data.success;
           if (success){
-            location.href = '/accounts';
+            this.$router.push('/accounts');
           }
         })
         .catch((error) => {
@@ -53,7 +53,7 @@ export default {
         email: this.loginDetails.email,
         password: this.loginDetails.password,
       }
-      this.RESTlogin(this.loginDetails);
+      this.RESTlogin(payload);
     },
 
     initForm() {
