@@ -39,8 +39,13 @@ export default {
         .then((response) => {
           console.log(response);
           const success = response.data.success;
+          const is_admin = response.data.is_admin;
           if (success){
-            this.$router.push('/accounts');
+            if (is_admin) {
+              this.$router.push('/admin');
+            } else {
+              this.$router.push('/accounts');
+            }
           }
         })
         .catch((error) => {
