@@ -11,7 +11,7 @@
   - [Configuration variables](#configuration-variables)
   - [Continuos Delivery](#continuos-delivery)
     - [GitHub secrets](#github-secrets)
-  -[Security Badges](#Security-Badges)
+  - [Security Badges](#security-badges)
 
 
 ## Overview
