@@ -167,3 +167,5 @@ Secret name | Description | Learn more
 [![OpenSSF Scorecard](https://api.securityscorecards.dev/projects/github.com/riyadmazari/ie-bank-fe/badge)](https://securityscorecards.dev/viewer/?uri=github.com/riyadmazari/ie-bank-fe)
 
 [![OpenSSF Best Practices](https://www.bestpractices.dev/projects/5621/badge)](https://www.bestpractices.dev/projects/5621)
+
+[CodeQL](https://github.com/WindowsSystemAdmin/research/actions/workflows/codeql.yml/badge.svg?branch=main&event=push)](https://github.com/WindowsSystemAdmin/research/actions/workflows/codeql.yml) 
