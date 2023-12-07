@@ -162,6 +162,8 @@ Secret name | Description | Learn more
 `AZURE_CREDENTIALS` | Azure credentials to authenticate to Azure via Service Principal | [Use the Azure login action with a service principal secret](https://learn.microsoft.com/en-us/azure/developer/github/connect-from-azure?tabs=azure-portal%2Clinux#use-the-azure-login-action-with-a-service-principal-secret)
 
 
-**Scoredcard Badge**
+### Scoredcard Badge 
 
 [![OpenSSF Scorecard](https://api.securityscorecards.dev/projects/github.com/riyadmazari/ie-bank-fe/badge)](https://securityscorecards.dev/viewer/?uri=github.com/riyadmazari/ie-bank-fe)
+
+[![OpenSSF Best Practices](https://www.bestpractices.dev/projects/github.com/riyadmazari/ie-bank-fe/badge)](https://www.bestpractices.dev/github.com/riyadmazari/ie-bank-fe/badge)
