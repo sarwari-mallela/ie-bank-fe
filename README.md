@@ -163,4 +163,4 @@ Secret name | Description | Learn more
 
 
 **Scoredcard Badge**
-[![OpenSSF Scorecard](https://api.securityscorecards.dev/projects/github.com/{sarwari-mallela}/{ie-bank-fe}/badge)](https://securityscorecards.dev/viewer/?uri=github.com/{sarwari-mallela}/{ie-bank-fe})
+[![OpenSSF Scorecard](https://api.securityscorecards.dev/projects/github.com/{riyadmazari}/{riyadmazari/ie-bank-fe}/badge)](https://securityscorecards.dev/viewer/?uri=github.com/{riyadmazari}/{riyadmazari/ie-bank-fe})
