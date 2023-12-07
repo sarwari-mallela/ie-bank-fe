@@ -16,9 +16,11 @@ We strive to acknowledge and respond to security reports within a 72-hour window
 To uphold and enhance the security of our project, we adhere to a set of best practices and standards, including but not limited to:
 
 - Branch Protection Rules: Implementing strict rules on branch modifications to prevent unauthorized alterations and to maintain code integrity.
+- CodeQL
 - CODEOWNERS File: Utilizing GitHub's CODEOWNERS feature to automatically assign reviewers and manage code review processes effectively.
 - OSSF Scorecard: Employing Open Source Security Foundation (OSSF) Scorecards to assess and improve our repository's security posture.
 - SAFECODE: Following the principles and practices outlined by the Software Assurance Forum for Excellence in Code (SAFECODE) to ensure the development of secure and reliable code.
+- OPENSSF: Following the principles and practices outlined by the Open Security Source Foundation to ensure the development of secure and reliable code. 
   
 ## Security-Related Configuration 
 We encourage users and team members to adhere to specific security-related configurations to enhance the project's overall security. 
