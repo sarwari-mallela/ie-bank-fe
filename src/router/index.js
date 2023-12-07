@@ -5,6 +5,8 @@ import AppAccounts from '../components/AppAccounts.vue'
 import AppUsers from '../components/AppUsers.vue'
 import HomePage from '../components/HomePage.vue'
 import AdminMenu from '../components/AdminMenu.vue'
+import UserMenu from '../components/UserMenu.vue'
+import TransactionsMenu from '../components/TransactionsMenu.vue'
 
 Vue.use(VueRouter)
 
@@ -32,7 +34,17 @@ const routes = [
   {
     path: '/admin',
     name: 'AdminMenu',
-    component: AdminMenu
+    component: AdminMenu,
+  },
+  {
+    path: '/menu',
+    name: 'UserMenu',
+    component: UserMenu,
+  },
+  {
+    path: '/transactions',
+    name: 'TransactionsMenu',
+    component: TransactionsMenu,
   }
 ]
 

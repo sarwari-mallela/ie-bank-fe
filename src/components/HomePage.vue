@@ -2,6 +2,8 @@
   <div class="login-page">
     <div class="login-form">
       <h1 class="pretty-font">Login to IE Bank</h1>
+      <!-- Error Message -->
+      <div v-if="errorMessage" class="error-message">{{ errorMessage }}</div>
       <form @submit.prevent="login">
         <div class="form-group">
           <label for="username">Username:</label>
@@ -29,6 +31,7 @@ export default {
         email: '',
         password: '',
       },
+      errorMessage: '',
     };
   },
   methods: {
@@ -37,19 +40,20 @@ export default {
       axios
         .post(path, payload)
         .then((response) => {
-          console.log(response);
-          const success = response.data.success;
           const is_admin = response.data.is_admin;
-          if (success){
-            if (is_admin) {
-              this.$router.push('/admin');
-            } else {
-              this.$router.push('/accounts');
-            }
+          if (is_admin) {
+            this.$router.push('/admin');
+          } else {
+            this.$router.push('/menu');
           }
         })
         .catch((error) => {
-          console.error(error);
+          const status = error.response.status;
+          if (status === 401) {
+            this.errorMessage = 'Invalid Credentials';
+          } else {
+            this.errorMessage = 'Something went wrong. Please try again later.';
+          }
         });
     },
 

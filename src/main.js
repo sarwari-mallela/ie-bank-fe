@@ -17,7 +17,8 @@ axios.interceptors.response.use(
   },
   (error) => {
     // Check if the error is a redirect to the login page
-    if (error.response.status === 401) {
+    const err_message = error.response.data.message;
+    if (error.response.status === 401 && err_message !== 'Invalid Credentials') {
       console.log('Redirect to login detected');
       // Redirect to the home page or any other desired page
       router.push('/');
