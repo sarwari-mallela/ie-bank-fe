@@ -17,6 +17,9 @@
                 <th scope="col">Transaction Amount</th>
                 <th scope="col">Transaction Currency</th>
                 <th scope="col">Transaction Date</th>
+                <th scope="col">Account ID</th>
+                <th scope="col">Destination Account ID</th>
+                
                 <!-- Add more headers as needed -->
               </tr>
             </thead>
@@ -25,6 +28,8 @@
                 <td>{{ transaction.amount }}</td>
                 <td>{{ transaction.currency }}</td>
                 <td>{{ transaction.created_at }}</td>
+                <td>{{ transaction.account_id }}</td>
+                <td>{{ transaction.destination_account_id }}</td>
                 <!-- Add more cells as needed -->
               </tr>
             </tbody>
