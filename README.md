@@ -166,4 +166,4 @@ Secret name | Description | Learn more
 
 [![OpenSSF Scorecard](https://api.securityscorecards.dev/projects/github.com/riyadmazari/ie-bank-fe/badge)](https://securityscorecards.dev/viewer/?uri=github.com/riyadmazari/ie-bank-fe)
 
-[![OpenSSF Best Practices](https://www.bestpractices.dev/projects/github.com/riyadmazari/ie-bank-fe/badge)](https://www.bestpractices.dev/github.com/riyadmazari/ie-bank-fe/badge)
+[![OpenSSF Best Practices](https://www.bestpractices.dev/projects/5621/badge)](https://www.bestpractices.dev/projects/5621)
