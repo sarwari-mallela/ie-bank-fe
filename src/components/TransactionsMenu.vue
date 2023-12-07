@@ -11,31 +11,30 @@
           <b-alert v-if="showMessage" variant="success" show>{{ message }}</b-alert>
 
           <br /><br />
-          <table class="table table-hover">
-            <thead>
+          <table class="table table-hover table-bordered">
+            <thead class="thead-dark">
               <tr>
                 <th scope="col">Transaction Amount</th>
                 <th scope="col">Transaction Currency</th>
                 <th scope="col">Transaction Date</th>
                 <th scope="col">Account ID</th>
                 <th scope="col">Destination Account ID</th>
-                
                 <!-- Add more headers as needed -->
               </tr>
             </thead>
             <tbody>
               <tr v-for="transaction in transactions" :key="transaction.id">
-                <td>{{ transaction.amount }}</td>
+                <td class="text-success">{{ transaction.amount }}</td>
                 <td>{{ transaction.currency }}</td>
                 <td>{{ transaction.created_at }}</td>
-                <td>{{ transaction.account_id }}</td>
-                <td>{{ transaction.destination_account_id }}</td>
+                <td class="text-info">{{ transaction.account_id }}</td>
+                <td class="text-info">{{ transaction.destination_account_id }}</td>
                 <!-- Add more cells as needed -->
               </tr>
             </tbody>
           </table>
 
-          <footer class="text-center">
+          <footer class="text-center text-muted">
             Copyright &copy; All Rights Reserved.
           </footer>
         </div>
@@ -80,5 +79,5 @@ export default {
 </script>
 
 <style scoped>
-/* Your styles here... */
+/* Your additional styles here... */
 </style>
