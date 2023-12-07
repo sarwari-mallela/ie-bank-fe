@@ -117,6 +117,7 @@
               v-model="createAccountForm.currency"
               placeholder="$ or €"
               required
+              @input="validateCurrencyInput"
             >
             </b-form-input>
           </b-form-group>
@@ -259,6 +260,15 @@ export default {
     /***************************************************
      * RESTful requests
      ***************************************************/
+    validateCurrencyInput() {
+      const validCurrencies = ["$", "€"];
+      const enteredCurrency = this.createAccountForm.currency;
+      if (!validCurrencies.includes(enteredCurrency)) {
+        // Show an error message or handle invalid input accordingly
+        this.createAccountForm.currency = ""; // Clear the input or provide default value
+        alert("Invalid currency. Please enter $ or €.");
+      }
+    },
 
     //GET function
     RESTgetAccounts() {
@@ -340,6 +350,18 @@ export default {
     },
   
     RESTmoneyTransfer(payload) {
+      const transferAmount = parseFloat(payload.amount);
+
+      if (isNaN(transferAmount) || transferAmount <= 0) {
+        // Show an error message or handle invalid amount
+        this.message = "Invalid transfer amount. Please enter a positive number.";
+        this.showMessage = true;
+        setTimeout(() => {
+          this.showMessage = false;
+        }, 3000);
+        return;
+      }
+
       const path = `${process.env.VUE_APP_ROOT_URL}/transfer`;
       console.log(payload);
       axios.post(path, payload)
@@ -348,7 +370,7 @@ export default {
           this.showMessage = true;
 
           setTimeout(() => {
-            this.showMessage = false;``
+            this.showMessage = false;
           }, 3000);
 
           this.RESTgetAccounts();
@@ -363,6 +385,7 @@ export default {
           }, 3000);
         });
     },
+
 
 
     /***************************************************
