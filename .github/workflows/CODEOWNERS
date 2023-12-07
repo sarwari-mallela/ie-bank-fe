@@ -1,10 +1,15 @@
 # CODEOWNERS for the security branch
 
 # These users are the default owners for everything in the repo.
-# The last matching pattern has the most precedence.
-
+* @sarwari-mallela
 * @asaurasieu
 * @papilioaureus
+* @woonscode
+* @11acc
+* @smorenolasa1 
+* @panchomb
+* @clorenzol 
+* @riyadmazari 
 
 # For the security branch specifically
-/security/ @asaurasieu @papilioaureus
+/security/* @asaurasieu @papilioaureus
