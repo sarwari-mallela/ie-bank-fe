@@ -1,0 +1,10 @@
+# CODEOWNERS for the security branch
+
+# These users are the default owners for everything in the repo.
+# The last matching pattern has the most precedence.
+
+* asaurasieu
+* papilioaureus
+
+# For the security branch specifically
+/security/ @asaurasieu @papilioaureus
