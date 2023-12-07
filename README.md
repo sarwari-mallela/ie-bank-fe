@@ -168,4 +168,5 @@ Secret name | Description | Learn more
 
 [![OpenSSF Best Practices](https://www.bestpractices.dev/projects/5621/badge)](https://www.bestpractices.dev/projects/5621)
 
-[CodeQL](https://github.com/WindowsSystemAdmin/research/actions/workflows/codeql.yml/badge.svg?branch=main&event=push)](https://github.com/WindowsSystemAdmin/research/actions/workflows/codeql.yml) 
+![CodeQL](https://github.com/riyadmazari/ie-bank-fe/actions/workflows/codeql-analysis.yml/badge.svg)
+
