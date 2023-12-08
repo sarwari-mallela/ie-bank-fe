@@ -81,3 +81,10 @@ export default {
 <style scoped>
 /* Your additional styles here... */
 </style>
+<style scoped>
+  .jumbotron {
+    background-color: #8dd5d3; /* Blue Background Color */
+    color: #ffffff; /* White Text Color */
+    padding: 50px 0; /* Adjust the padding as needed */
+  }
+</style>

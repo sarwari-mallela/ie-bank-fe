@@ -369,7 +369,10 @@
   };
   </script>
   
-  <style scoped>
-  /* Your styles here... */
-  </style>
-  
+<style scoped>
+  .jumbotron {
+    background-color: #6ccbc8; /* Blue Background Color */
+    color: #ffffff; /* White Text Color */
+    padding: 50px 0; /* Adjust the padding as needed */
+  }
+</style>

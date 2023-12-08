@@ -82,12 +82,15 @@ export default {
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background-color: #ffc0cb; /* Baby Pink Background */
+  background-image: url('../../images/D.jpg'); /* Replace with the actual path to your image */
+  background-size: cover; /* Adjust the size of the background image */
+  background-position: center; /* Center the background image */
+  color: #fff; /* White Text Color */
 }
 
 .login-form {
   text-align: center;
-  color: #fff; /* White Text Color */
+  color: #ffffff; /* White Text Color */
   padding: 20px;
 }
 
@@ -97,11 +100,11 @@ export default {
 }
 
 .form-group {
-  margin-bottom: 15px;
+  margin-bottom: 20px; 
 }
 
 .action-button {
-  background-color: #ff69b47f; /* Hot Pink Button Color */
+  background-color: rgba(110, 255, 105, 0.498); /* Hot Pink Button Color */
   color: #fff; /* White Text Color */
   border: none;
   padding: 10px 20px;

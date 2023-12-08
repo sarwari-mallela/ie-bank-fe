@@ -242,6 +242,7 @@
   </div>
 </template>
 
+
 <script>
 import axios from "axios";
 export default {
@@ -459,3 +460,10 @@ export default {
   },
 };
 </script>
+<style scoped>
+  .jumbotron {
+    background-color: #6ccbc8; /* Blue Background Color */
+    color: #fff; /* White Text Color */
+    padding: 50px 0; /* Adjust the padding as needed */
+  }
+</style>
