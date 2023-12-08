@@ -162,6 +162,19 @@
             >
             </b-form-input>
           </b-form-group>
+          <b-form-group
+            id="form-edit-currency-group"
+            label="Currency:"
+            label-for="form-edit-currency-input"
+          >
+            <b-form-input
+              id="form-edit-currency-input"
+              type="text"
+              v-model="editAccountForm.currency"
+              placeholder="$ or €"
+              required
+            ></b-form-input>
+          </b-form-group>
           <b-button type="submit" variant="outline-info">Update</b-button>
         </b-form>
       </b-modal>
@@ -401,6 +414,7 @@ export default {
       this.$refs.editAccountModal.hide(); //hide the modal when submitted
       const payload = {
         name: this.editAccountForm.name,
+        currency: this.editAccountForm.currency,
       };
       this.RESTupdateAccount(payload, this.editAccountForm.id);
       this.initForm();
@@ -422,6 +436,7 @@ export default {
     editAccount(account) {
       this.editAccountForm.id = account.id;
       this.editAccountForm.name = account.name;
+      this.editAccountForm.currency = account.currency;
     },
 
     // Handle Delete button

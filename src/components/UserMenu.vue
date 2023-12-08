@@ -1,6 +1,6 @@
 <template>
     <div class="admin-menu">
-      <h1 class="pretty-font">Menu</h1>
+      <h1 class="pretty-font">User Menu</h1>
   
       <div class="menu-options">
         <router-link class="action-button" to="/accounts">Account Management Portal</router-link>
