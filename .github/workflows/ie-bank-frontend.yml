@@ -36,7 +36,7 @@ jobs:
             if [ "${{ github.ref_name }}" = "main" ]; then
               echo "MODE=prod" >> $GITHUB_ENV
             else
-              echo "MODE=dev" >> $GITHUB_ENV
+              echo "MODE=development" >> $GITHUB_ENV
             fi
           fi
 
@@ -73,7 +73,7 @@ jobs:
               echo "MODE=prod" >> $GITHUB_ENV
             else
               echo "AZURE_WEBAPP_NAME=grp4-fe-dev" >> $GITHUB_ENV
-              echo "MODE=dev" >> $GITHUB_ENV
+              echo "MODE=development" >> $GITHUB_ENV
             fi
           fi
 
