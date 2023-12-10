@@ -92,7 +92,7 @@ jobs:
           API_TOKEN=$(az staticwebapp secrets list --name ${{ env.AZURE_WEBAPP_NAME }} --query "properties.apiKey" --output tsv)
           echo "API_TOKEN=$API_TOKEN" >> $GITHUB_ENV
 
-      -name: 'Run ls'
+      - name: 'Run ls'
         run: |
           ls -a
 
