@@ -265,8 +265,8 @@
           .put(path, payload)
           .then((response) => {
             this.RESTgetUsers();
-
-            this.message = response.data.message;
+            console.log(response.data)
+            this.message = 'User updated succesfully!';
 
             this.showMessage = true;
 
