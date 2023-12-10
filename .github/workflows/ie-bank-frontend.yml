@@ -52,8 +52,7 @@ jobs:
           name: node-app-${{ env.MODE }}
           path: dist
 
-  deploy-dev:
-    if: github.event_name != 'pull_request'
+  deploy:
     runs-on: ubuntu-latest
     needs: build
     environment:
