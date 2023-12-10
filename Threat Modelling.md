@@ -1,4 +1,3 @@
-# IE Bank Frontend Application Security
 # THREAT MODELLING ANALYSIS FOLLOWING THE PASTA MODEL. 
 
 ## Introduction to PASTA
@@ -23,7 +22,7 @@ and quantify the multifaceted risks that lurk within software applications and c
 - Define the risk profile.
 
 **The business objectives:**
-For the IE Bank frontend application, the business objectives focus on enabling secure online banking experiences, including user-friendly interfaces for account management, transaction processing, and customer service. 
+For the IE Bank application, the business objectives focus on enabling secure online banking experiences, including user-friendly interfaces for account management, transaction processing, and customer service. 
 Security objectives prioritize data protection, regulatory compliance, and ensuring continuous availability of services. 
 Compliance with financial industry standards and data protection laws is crucial. 
 The risk profile should account for the sensitivity of financial data and the potential impact of data breaches or service interruptions.
@@ -44,7 +43,7 @@ What's needed in this stage:
 - Identify actors & data sinks/sources
   
 **Enumerate software components:**
-The IE Bank frontend application encompasses a stack that includes:
+The IE Bank application encompasses a stack that includes:
 - Cloud hosting platform, Azure webservices. 
 - Web application architecture, divided into a front-end using Vue.js, and a backend possibly using bicep python. 
 - Databases for user data, transactions, and logs, which could include SQL Alquemy and Flask frameworks.
@@ -68,7 +67,7 @@ What's needed in this stage:
 
   
 **Application use cases:**
-The primary use case of the IE Bank frontend application is to provide a secure, user-friendly online banking platform login page that enables customers to manage their financial activities. 
+The primary use case of the IE Bank application is to provide a secure, user-friendly online banking platform login page that enables customers to manage their financial activities. 
 
 **This includes:**
 - Customer:
@@ -142,7 +141,7 @@ If the victim is an administrative account, CSRF can compromise the entire web a
 - Conduct targeted vulnerability testing.
 
 **Review and correlate existing vulnerability data:**
-For IE Bank's frontend application, review historical incident reports to identify any recurring vulnerabilities, particularly focusing on any past issues with third-party libraries or frameworks.
+For IE Bank's application, review historical incident reports to identify any recurring vulnerabilities, particularly focusing on any past issues with third-party libraries or frameworks.
 Assess the effectiveness of existing network segmentation, especially if it includes legacy systems known for update and patch management issues.
 
 **Identify weak design patterns in the architecture:**
@@ -182,7 +181,7 @@ Ensure that the testing plan covers new code, with a particular focus on changes
 - Recommend a strategy to manage risks.
 
 **Calculate the risk of each threat:**
-For the IE Bank frontend application, we have analyzed various threats and have assigned a risk level based on their likelihood and potential impact. 
+For the IE Bank application, we have analyzed various threats and have assigned a risk level based on their likelihood and potential impact. 
 For example, the risk of cross-site scripting (XSS) is identified as MEDIUM likelihood due to robust input validation, but the impact is HIGH because of the potential to affect many users, leading to an overall HIGH risk rating.
 
 **Identify the countermeasures:**
