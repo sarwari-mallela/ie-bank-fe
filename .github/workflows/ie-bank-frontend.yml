@@ -45,14 +45,14 @@ jobs:
       - name: npm install, build, and test for dev
         run: |
           npm install
-          npm run build -- --mode ${{ env.MODE }} --dest dist-${{ env.MODE }}
+          npm run build -- --mode ${{ env.MODE }}
 
 
       - name: Upload artifact for deployment dev job
         uses: actions/upload-artifact@v3
         with:
           name: node-app-${{ env.MODE }}
-          path: dist-${{ env.MODE }}/
+          path: dist
 
   deploy:
     runs-on: ubuntu-latest
@@ -98,5 +98,5 @@ jobs:
           action: 'upload'
           azure_static_web_apps_api_token: ${{ env.API_TOKEN }}
           repo_token: ${{ secrets.GITHUB_TOKEN }}
-          app_location: 'dist-${{ env.MODE }}'
+          app_location: 'dist'
           output_location: ''
