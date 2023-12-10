@@ -51,7 +51,7 @@ jobs:
       - name: Upload artifact for deployment dev job
         uses: actions/upload-artifact@v3
         with:
-          name: node-app-${{ env.MODE }}}
+          name: node-app-${{ env.MODE }}
           path: dist-${{ env.MODE }}/
 
   deploy:
