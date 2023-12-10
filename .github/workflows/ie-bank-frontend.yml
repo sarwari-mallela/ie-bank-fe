@@ -100,3 +100,4 @@ jobs:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
           app_location: '.'
           output_location: ''
+          
