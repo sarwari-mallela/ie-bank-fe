@@ -42,7 +42,7 @@ jobs:
       - name: npm install, build, and test for dev
         run: |
           npm install
-          npm run build -- --mode ${{ env.MODE }}
+          npm run build -- --mode development
 
 
       - name: Upload artifact for deployment dev job
@@ -128,7 +128,7 @@ jobs:
       - name: npm install, build, and test for dev
         run: |
           npm install
-          npm run build -- --mode ${{ env.MODE }}
+          npm run build -- --mode uat
 
 
       - name: Upload artifact for deployment dev job
@@ -214,7 +214,7 @@ jobs:
       - name: npm install, build, and test for dev
         run: |
           npm install
-          npm run build -- --mode ${{ env.MODE }}
+          npm run build -- --mode production
 
 
       - name: Upload artifact for deployment dev job
