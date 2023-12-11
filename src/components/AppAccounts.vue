@@ -50,24 +50,32 @@
                   }}</span>
                 </td>
                 <td>
-                  <div class="btn-group" role="group">
-                    <button
-                      type="button"
-                      class="btn btn-info btn-sm"
-                      v-b-modal.edit-account-modal
-                      @click="editAccount(account)"
-                    >
-                      Edit
-                    </button>
-                    <button
-                      type="button"
-                      class="btn btn-danger btn-sm"
-                      @click="deleteAccount(account)"
-                    >
-                      Delete
-                    </button>
-                  </div>
-                </td>
+                <div class="btn-group" role="group">
+                  <button
+                    type="button"
+                    class="btn btn-info btn-sm"
+                    v-b-modal.edit-account-modal
+                    @click="editAccount(account)"
+                  >
+                    Edit
+                  </button>
+                  <button
+                    type="button"
+                    class="btn btn-danger btn-sm"
+                    @click="deleteAccount(account)"
+                  >
+                    Delete
+                  </button>
+                  <button
+                    type="button"
+                    class="btn btn-primary btn-sm"
+                    v-b-modal.transfer-modal
+                    @click="moneyTransfer(account)"
+                  >
+                    Transfer Money
+                  </button>
+                </div>
+              </td>
               </tr>
             </tbody>
           </table>
@@ -154,13 +162,86 @@
             >
             </b-form-input>
           </b-form-group>
+          <b-form-group
+            id="form-edit-currency-group"
+            label="Currency:"
+            label-for="form-edit-currency-input"
+          >
+            <b-form-input
+              id="form-edit-currency-input"
+              type="text"
+              v-model="editAccountForm.currency"
+              placeholder="$ or €"
+              required
+            ></b-form-input>
+          </b-form-group>
           <b-button type="submit" variant="outline-info">Update</b-button>
         </b-form>
       </b-modal>
       <!-- End of Modal for Edit Account-->
+      <!-- Start of Modal for Transfer Money-->
+      <b-modal 
+        ref="transferModal"
+        id="transfer-modal" 
+        title="Transfer Money"
+        hide-backdrop
+        hide-footer
+      >
+        <b-form @submit="onSubmitTransfer" class="w-100">
+          <b-form-group 
+            id="form-sender-account-number-group"
+            label="Sender Account Number"
+            label-for="form-sender-account-number-input"
+          >
+            <b-form-input 
+              id="form-sender-account-number-input"
+              type="text"
+              v-model="transferForm.senderAccountNumber" 
+              placeholder="Account Number"
+              required 
+              readonly 
+            >
+            </b-form-input>
+          </b-form-group>
+
+          <b-form-group 
+            id="form-receiver-account-number-group"
+            label="Receiving Account Number"
+            label-for="form-receiver-account-number-input"
+          >
+            <b-form-input 
+              id="form-receiver-account-number-input"
+              type="text"
+              v-model="transferForm.receiverAccountNumber" 
+              placeholder="Account Number"
+              required
+            >
+            </b-form-input>
+          </b-form-group>
+
+          <b-form-group 
+            id="form-amount-group"
+            label="Amount"
+            label-for="form-amount-input"
+          >
+            <b-form-input 
+              id="form-amount-input"
+              v-model="transferForm.amount" 
+              type="number" 
+              placeholder="Amount"
+              required
+            >
+            </b-form-input>
+          </b-form-group>
+
+          <b-button type="submit" variant="outline-info">Transfer</b-button>
+        </b-form>
+      </b-modal>
+      <!-- End of Modal for Transfer Money-->
     </div>
   </div>
 </template>
+
 
 <script>
 import axios from "axios";
@@ -177,6 +258,12 @@ export default {
       editAccountForm: {
         id: "",
         name: "",
+      },
+      transferForm: {
+        senderAccountNumber: '',
+        senderAccountId: '',
+        receiverAccountNumber: '',
+        amount: 0,
       },
       showMessage: false,
       message: "",
@@ -265,6 +352,32 @@ export default {
           this.RESTgetAccounts();
         });
     },
+  
+    RESTmoneyTransfer(payload) {
+      const path = `${process.env.VUE_APP_ROOT_URL}/transfer`;
+      console.log(payload);
+      axios.post(path, payload)
+        .then((response) => {
+          this.message = "Money Transfer successful!";
+          this.showMessage = true;
+
+          setTimeout(() => {
+            this.showMessage = false;``
+          }, 3000);
+
+          this.RESTgetAccounts();
+        })
+        .catch((error) => {
+          console.error(error);
+          // Handle errors, update UI, etc.
+          this.message = "Money Transfer failed. Please try again.";
+          this.showMessage = true;
+          setTimeout(() => {
+            this.showMessage = false;
+          }, 3000);
+        });
+    },
+
 
     /***************************************************
      * FORM MANAGEMENT
@@ -277,6 +390,10 @@ export default {
       this.createAccountForm.country = "";
       this.editAccountForm.id = "";
       this.editAccountForm.name = "";
+      this.transferForm.senderAccountNumber = "";
+      this.transferForm.senderAccountId = "";
+      this.transferForm.receiverAccountNumber = "";
+      this.transferForm.amount = 0;
     },
 
     // Handle submit event for create account
@@ -298,19 +415,40 @@ export default {
       this.$refs.editAccountModal.hide(); //hide the modal when submitted
       const payload = {
         name: this.editAccountForm.name,
+        currency: this.editAccountForm.currency,
       };
       this.RESTupdateAccount(payload, this.editAccountForm.id);
       this.initForm();
     },
 
+    onSubmitTransfer(e) {
+      e.preventDefault();
+      this.$refs.transferModal.hide();
+      const payload = {
+        sender_account_id: this.transferForm.senderAccountId,
+        receiver_account_number: this.transferForm.receiverAccountNumber,
+        amount: this.transferForm.amount,
+      }
+      this.RESTmoneyTransfer(payload);
+      this.initForm();
+    },
+
     // Handle edit button
     editAccount(account) {
-      this.editAccountForm = account;
+      this.editAccountForm.id = account.id;
+      this.editAccountForm.name = account.name;
+      this.editAccountForm.currency = account.currency;
     },
 
     // Handle Delete button
     deleteAccount(account) {
       this.RESTdeleteAccount(account.id);
+    },
+
+    moneyTransfer(account) {
+      this.transferForm.senderAccountId = account.id;
+      this.transferForm.senderAccountNumber = account.account_number;
+      console.log(this.transferForm.receiverAccountNumber);
     },
   },
 
@@ -322,3 +460,10 @@ export default {
   },
 };
 </script>
+<style scoped>
+  .jumbotron {
+    background-color: #6ccbc8; /* Blue Background Color */
+    color: #fff; /* White Text Color */
+    padding: 50px 0; /* Adjust the padding as needed */
+  }
+</style>
